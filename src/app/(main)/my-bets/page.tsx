@@ -6,6 +6,7 @@ function formatDate(s: string) {
   return new Date(s).toLocaleString('zh-TW', {
     month: 'numeric', day: 'numeric',
     hour: '2-digit', minute: '2-digit',
+    timeZone: 'Asia/Taipei',
   })
 }
 

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Match, STATUS_LABELS } from '@/types'
 
 function formatDate(s: string) {
-  return new Date(s).toLocaleString('zh-TW', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' })
+  return new Date(s).toLocaleString('zh-TW', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Taipei' })
 }
 
 export default async function AdminMatchesPage() {

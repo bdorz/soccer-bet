@@ -82,7 +82,7 @@ export default function SettlePage() {
           <p className="text-xl font-bold text-white">{match.away_team}</p>
         </div>
         <p className="text-center text-sm text-gray-500">
-          {new Date(match.match_time).toLocaleString('zh-TW')}
+          {new Date(match.match_time).toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })}
         </p>
       </div>
 
