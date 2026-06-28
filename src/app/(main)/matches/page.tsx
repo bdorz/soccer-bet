@@ -31,6 +31,9 @@ function StatusBadge({ status }: { status: Match['status'] }) {
 export default async function MatchesPage() {
   const supabase = await createClient()
 
+  // 每次有人開比賽列表時自動關閉已過期的比賽
+  await supabase.rpc('close_expired_matches')
+
   const { data: matches } = await supabase
     .from('matches')
     .select('*, match_odds(bet_type)')
