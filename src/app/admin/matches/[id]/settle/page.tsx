@@ -58,7 +58,7 @@ export default function SettlePage() {
         <div className="text-5xl mb-4">✅</div>
         <h2 className="text-2xl font-bold text-white mb-2">結算完成</h2>
         <p className="text-gray-400 mb-1">已結算 <span className="text-white font-bold">{settled.settled}</span> 筆下注</p>
-        <p className="text-gray-400 mb-6">共派彩 <span className="text-green-400 font-bold">{settled.total_paid_out.toLocaleString()} 點</span></p>
+        <p className="text-gray-400 mb-6">共派彩 <span className="text-green-400 font-bold">{(settled.total_paid_out ?? 0).toLocaleString()} 點</span></p>
         <Link href="/admin/matches" className="bg-green-600 hover:bg-green-700 text-white font-medium rounded-xl px-6 py-3 transition-colors">
           返回比賽列表
         </Link>

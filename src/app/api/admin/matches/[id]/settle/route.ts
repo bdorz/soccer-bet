@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createClient, createServiceClient } from '@/lib/supabase/server'
 import {
   BetType, BetSelection,
-  Odds1x2, OddsCorrectScore,
+  OddsCorrectScore,
   Selection1x2, SelectionAsianHandicap, SelectionOverUnder, SelectionCorrectScore,
 } from '@/types'
 
@@ -90,7 +90,7 @@ export async function POST(request: NextRequest, { params }: { params: Promise<{
     .eq('status', 'pending')
 
   if (!bets || bets.length === 0) {
-    return NextResponse.json({ message: '無待結算下注', settled: 0 })
+    return NextResponse.json({ message: '無待結算下注', settled: 0, total_paid_out: 0 })
   }
 
   // Get odds data per type
