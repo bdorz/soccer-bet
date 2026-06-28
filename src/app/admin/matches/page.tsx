@@ -51,12 +51,12 @@ export default async function AdminMatchesPage() {
               </span>
             </span>
             <div className="col-span-2 flex justify-end gap-1">
-              {(match.status === 'open' || match.status === 'closed') && (
+              {match.status !== 'cancelled' && (
                 <Link
                   href={`/admin/matches/${match.id}/settle`}
                   className="text-xs bg-yellow-800 hover:bg-yellow-700 text-yellow-200 px-2 py-1 rounded transition-colors"
                 >
-                  結算
+                  {match.status === 'finished' ? '重新結算' : '結算'}
                 </Link>
               )}
             </div>
