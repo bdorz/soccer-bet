@@ -85,7 +85,7 @@ export async function POST(request: NextRequest, { params }: { params: Promise<{
   // 2. Get all pending bets for this match
   const { data: bets } = await service
     .from('bets')
-    .select('*, match_odds!inner(odds_data)')
+    .select('*')
     .eq('match_id', id)
     .eq('status', 'pending')
 
