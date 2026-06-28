@@ -84,6 +84,16 @@ export default function SettlePage() {
         <p className="text-center text-sm text-gray-500">
           {new Date(match.match_time).toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })}
         </p>
+        <div className="text-center mt-3">
+          <a
+            href={`https://www.google.com/search?q=${encodeURIComponent(`${match.home_team} vs ${match.away_team} 賽果`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs text-blue-400 hover:text-blue-300 underline"
+          >
+            🔍 Google 查詢賽果
+          </a>
+        </div>
       </div>
 
       {/* Pending bets summary */}
