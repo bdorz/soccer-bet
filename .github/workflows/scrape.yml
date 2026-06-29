@@ -13,10 +13,25 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: 安裝依賴
         run: npm ci
+
+      - name: 檢查環境變數
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          if [ -z "$NEXT_PUBLIC_SUPABASE_URL" ]; then
+            echo "❌ 缺少 NEXT_PUBLIC_SUPABASE_URL secret"
+            exit 1
+          fi
+          if [ -z "$SUPABASE_SERVICE_ROLE_KEY" ]; then
+            echo "❌ 缺少 SUPABASE_SERVICE_ROLE_KEY secret"
+            exit 1
+          fi
+          echo "✅ 環境變數已設定"
 
       - name: 執行同步
         env:
