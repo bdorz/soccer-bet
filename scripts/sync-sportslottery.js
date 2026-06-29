@@ -137,7 +137,14 @@ async function syncMatches() {
 
   let games
   try {
-    const res = await fetch(SOCCER_API)
+    const res = await fetch(SOCCER_API, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36',
+        'Referer': 'https://www.sportslottery.com.tw/',
+        'Accept': 'application/json, text/plain, */*',
+        'Accept-Language': 'zh-TW,zh;q=0.9',
+      },
+    })
     if (!res.ok) throw new Error(`HTTP ${res.status}`)
     games = await res.json()
   } catch (err) {
@@ -214,7 +221,13 @@ async function syncMatches() {
 
 // 驗證賠率輸出（測試用）
 async function verifyOdds() {
-  const res = await fetch(SOCCER_API)
+  const res = await fetch(SOCCER_API, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36',
+      'Referer': 'https://www.sportslottery.com.tw/',
+      'Accept': 'application/json, text/plain, */*',
+    },
+  })
   const games = await res.json()
   const wc = games.filter(g => g.tn?.includes('世界盃'))
   if (!wc.length) { console.log('目前無世界盃場次'); return }
